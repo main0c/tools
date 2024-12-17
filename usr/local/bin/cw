@@ -1,0 +1,22 @@
+#!/bin/bash
+
+# 检查是否提供了参数
+if [ -n "$1" ]; then
+    TARGET_DIR="$1"
+else
+    TARGET_DIR="."
+fi
+
+# 检查目标目录是否存在
+if [ ! -d "$TARGET_DIR" ]; then
+    echo "目录 $TARGET_DIR 不存在"
+    exit 1
+fi
+
+# 更改组和所有者
+sudo chgrp -R guest "$TARGET_DIR"
+sudo chown -R guest "$TARGET_DIR"
+sudo chmod -R 777 "$TARGET_DIR"
+
+echo "已将 $TARGET_DIR 的组和所有者更改为 guest"
+
