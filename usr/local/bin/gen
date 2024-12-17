@@ -17,8 +17,15 @@ else
     CONTENT="$2"
 fi
 
-# 使用循环结合seq命令创建1000个文件并写入内容
-for i in $(seq 1 1000); do
+# 检查第三个参数是否存在且为数字
+if [ -n "$3" ] && [[ $3 =~ ^[0-9]+$ ]]; then
+    FILE_COUNT=$3
+else
+    FILE_COUNT=1000
+fi
+
+# 使用循环结合seq命令创建指定数量的文件并写入内容
+for i in $(seq 1 $FILE_COUNT); do
     file="$DIR/$i.txt"
     echo "$CONTENT" > "$file"  # 将指定内容写入文件，每次循环会覆盖原内容，如果想追加内容用 >> 符号
 done
