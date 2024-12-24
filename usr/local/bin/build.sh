@@ -1,0 +1,2 @@
+
+cmake .. -DPY_VERSION=3.12 -DPYTHON_EXECUTABLE=`which python3.12`          -DWITH_TESTING=OFF -DON_INFER=ON -DWITH_XBYAK=OFF          -DCMAKE_CXX_FLAGS="-Wno-error -w"          -DWITH_CUDNN=OFF 
